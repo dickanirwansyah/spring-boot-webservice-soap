@@ -1,0 +1,87 @@
+<!--nasabah web service -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://myhost.com/spring-soap/nasabah-ws"
+           targetNamespace="http://myhost.com/spring-soap/nasabah-ws"
+           elementFormDefault="qualified">
+            <xs:element name="getRequestNasabahById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nasabahId" type="xs:long"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getResponseNasabahById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nasabahInfo" type="tns:nasabahInfo"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="nasabahInfo">
+                <xs:sequence>
+                    <xs:element name="nasabahId" type="xs:long"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="category" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getRequestNasabahAll">
+                <xs:complexType/>
+            </xs:element>
+            <xs:element name="getResponseNasabahAll">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nasabahInfo" type="tns:nasabahInfo" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="serviceStatus">
+                <xs:sequence>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="addRequestNasabah">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="xs:string"/>
+                        <xs:element name="category" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addResponseNasabah">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                        <xs:element name="nasabahInfo" type="tns:nasabahInfo"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateRequestNasabah">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nasabahInfo" type="tns:nasabahInfo"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateResponseNasabah">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteRequestNasabah">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nasabahId" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteResponseNasabah">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="serviceStatus" type="tns:serviceStatus"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+</xs:schema>
